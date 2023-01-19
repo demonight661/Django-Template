@@ -1,0 +1,4 @@
+Django              #FRAMEWORK
+django-environ      #CALL THE .ENV VARIABLES
+gunicorn            #WEB SERVER FOR CONNECT 
+psycopg2-binary
