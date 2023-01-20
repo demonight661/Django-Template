@@ -3,27 +3,27 @@ version: "3.9"
 services:
   web:
     container_name: Django
-    image: zander404/site
+    build: .
     command:  sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./src/app:/app/
-    ports:
+    expose:
       - 8000:8000
 
 
 
-  # nginx:
-  #   container_name: Nginx
-  #   image: nginx
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
+  nginx:
+    container_name: Nginx
+    image: nginx
+    ports:
+      - "80:80"
+      - "8000:8000"
 
-  #   volumes:
-  #   - ./nginx:/etc/nginx
+    volumes:
+    - ./nginx:/etc/nginx/conf.d
    
-  #   depends_on:
-  #     - web
+    depends_on:
+      - web
       
     
  
